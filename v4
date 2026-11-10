@@ -1,0 +1,21 @@
+Pokémon Ultimate Legends Edition — host test report
+Date: 2026-11-10
+
+Command:
+gcc -std=c99 -Wall -Wextra -Werror -Itest_stubs -Ipokeemerald-expansion-master/include -Itest_stubs/constants test_stubs/test_campaign.c pokeemerald-expansion-master/src/ultimate_legends.c pokeemerald-expansion-master/src/ultimate_legends_campaign.c -o ultimate_legends_campaign_test
+
+Result: PASS
+Output:
+Ultimate Legends campaign tests: PASS (9 regions, 72 milestones, champion gates, unlock chain, metadata)
+
+Coverage:
+- Kanto starts unlocked; Johto starts locked.
+- An incomplete region cannot trigger Champion completion.
+- Eight milestones are required before a Champion challenge.
+- Milestones cannot exceed eight.
+- Winning/completing each region unlocks only the next region.
+- All nine campaign metadata records resolve, including Paldea (region enum includes Hisui but this project intentionally uses nine Ash incarnations and skips Hisui).
+- Paldea can be selected as the current region after unlock.
+
+Not tested:
+- GBA ARM compilation, ROM header, game boot, map transitions, player sprites/animations, campaign maps/story content, multiplayer link session, emulator playthrough, or patch application.
